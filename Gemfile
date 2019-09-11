@@ -10,6 +10,7 @@ gem 'devise', '~> 4.7.1'
 gem 'jbuilder', '~> 2.5'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
+gem 'rails-controller-testing'
 gem 'rubocop', require: false
 gem 'sass-rails', '~> 5'
 gem 'webpacker', '~> 4.0'
@@ -18,7 +19,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'faker'
-  gem 'rspec-rails', '~> 3.8'
+  gem 'rspec-rails', '~> 4.0.0.beta2'
 end
 
 group :development do
