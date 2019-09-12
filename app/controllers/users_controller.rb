@@ -4,8 +4,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  private   
+  private
+
   def user_params 
-    params.permit(:email, :id, :avatr)
+    params.permit(:email, :id, :avatr, :nick)
   end
 end
