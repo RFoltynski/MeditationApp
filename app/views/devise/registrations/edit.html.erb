@@ -32,6 +32,18 @@
   </div>
 
   <%= f.file_field :avatar %>
+  
+  <% if current_user.avatar.attached? %>
+    <%= image_tag(current_user.avatar) %>
+    <%= link_to 'Remove', delete_image_attachment_user_path(current_user.avatar.id), method: :delete,
+        data: { confirm: 'Are you sure?' }%>
+  <% else %>
+    <%= image_tag("/assets/avatar.png") %>
+  <% end %>
+
+  <div class="field">
+    <%= f.text_field :nick %>
+  </div>
 
   <div class="actions">
     <%= f.submit "Update" %>
