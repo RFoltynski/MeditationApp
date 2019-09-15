@@ -8,6 +8,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'bootstrap', '~> 4.3.1'
 gem 'devise', '~> 4.7.1'
 gem 'jbuilder', '~> 2.5'
+gem "mini_magick"
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'rails-controller-testing'

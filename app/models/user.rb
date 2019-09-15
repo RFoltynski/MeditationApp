@@ -9,6 +9,10 @@ class User < ApplicationRecord
             uniqueness: true
   validate :avatar_extension
 
+  def resize
+    return self.avatar.variant(resize: '300x300')
+  end
+
   private
 
   def avatar_extension
@@ -16,4 +20,6 @@ class User < ApplicationRecord
 
    errors.add(:avatar, 'must be a JPG or a PNG file.')
   end
+
+
 end
