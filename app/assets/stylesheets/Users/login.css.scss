@@ -6,6 +6,7 @@ $orange: #f15946;
 $white: #ffffff;
 
 .login-page {
+  background-image: url(asset-path("background.JPG"));
   color: $white;
   min-height: 100vh;
   height: 100%;
@@ -20,7 +21,6 @@ $white: #ffffff;
   width: 480px;
   height: 300px;
   background-color: $orange;
-  border-radius: 5px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -28,6 +28,7 @@ $white: #ffffff;
   -moz-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
   text-align: center;
+  opacity: 0.9;
   .field {
     margin: 15px 0;
   }
