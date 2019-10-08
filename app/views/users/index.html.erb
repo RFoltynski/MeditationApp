@@ -1,4 +1,6 @@
-<div class="main-page"> 
+<div class="main-page">
+  <div id="navbar"> </div>
+  <%= javascript_pack_tag 'navbar' %>
   <h1 class="text-center">Medi</h1>
   <% if current_user %>
   <%= link_to "Wyloguj", destroy_user_session_path, method: :delete %>
