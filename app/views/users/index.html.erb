@@ -1,7 +1,9 @@
-<h1 class="text-center">Meditation App</h1>
+<div class="main-page"> 
+  <h1 class="text-center">Medi</h1>
   <% if current_user %>
   <%= link_to "Wyloguj", destroy_user_session_path, method: :delete %>
   <%= link_to "Edytuj profil", edit_user_registration_path %>
   <% else %>
   <%= link_to "Zaloguj", user_session_path %>
-<% end %>
+  <% end %>
+</div>
