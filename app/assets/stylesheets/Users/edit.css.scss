@@ -1,0 +1,27 @@
+$black: #080707;
+$gray: #225560;
+$yellow: #fcc319;
+$yellow-light: #f0cf75;
+$orange: #f15946;
+$white: #ffffff;
+.edit-page {
+  background-image: url(asset-path("background.JPG"));
+  padding-top: 20px;
+  height: 100%;
+}
+
+.edit-user-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: $orange;
+  color: $white;
+  -webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+  opacity: 0.9;
+}
+.edit-profile-avatar {
+  display: inline-block;
+}
