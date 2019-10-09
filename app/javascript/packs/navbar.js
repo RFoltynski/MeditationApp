@@ -5,7 +5,10 @@ class Navbar extends Component {
   render() {
     return (
       <div className="navbar">
-        <div className="logo">Medi</div> <a href="/users/edit">Edytuj Profil</a>{" "}
+        <div className="logo">
+          <a href="/">Medi</a>
+        </div>{" "}
+        <a href="/users/edit">Edytuj Profil</a>{" "}
         <a href="/users/sign_out">Wyloguj</a>
       </div>
     );
