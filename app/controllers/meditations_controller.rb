@@ -11,6 +11,9 @@ class MeditationsController < ApplicationController
 
     redirect_to meditations_path
   end
+  def show 
+    @meditation = Meditation.find(params[:id])
+  end
 
   private
 

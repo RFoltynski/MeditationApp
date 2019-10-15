@@ -3,5 +3,6 @@
    <%= f.text_field :name, placeholder: "Wprowadź nazwę medytacjii..", autofocus: true %>
    <%= f.label "Plik audio" %>
    <%= f.file_field :meditationFile %>
+  <%= f.submit(@meditation.new_record? ? "Dodaj post" : "Edytuj post") %>
   </div>
 <% end %>

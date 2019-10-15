@@ -1,0 +1,4 @@
+  <% @meditations.each do |meditation| %>
+    <h2><%= meditation.name %> </h2>
+    <%= link_to "Osłuchaj medytacji", meditation_path(meditation) %>
+  <% end %>
