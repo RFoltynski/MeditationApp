@@ -1,0 +1,7 @@
+<div id="navbar">
+  <% if current_user %>
+  <%= javascript_pack_tag 'navbar' %>
+  <% else %>
+  <%= link_to "Zaloguj", user_session_path %>
+  <% end %>
+</div>
