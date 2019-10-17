@@ -4,13 +4,14 @@ class MeditationsController < ApplicationController
   end
   def new
     @meditation = Meditation.new
+   
     @collections = Collection.all.map{|c| [c.name, c.id]}
   end
   def create
     @meditation = Meditation.new(meditation_params)
+
     @meditation.collection_id = params[:collection_id]
     return render('new') unless @meditation.save
-
     redirect_to meditations_path
   end
   def show 

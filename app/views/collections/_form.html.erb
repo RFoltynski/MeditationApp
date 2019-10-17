@@ -1,0 +1,8 @@
+<%= form_for @collection do |f| %>
+  <div class="form-group">
+   
+    <%= f.text_field :name, placeholder: "Wprowadź nazwę kolekcji..", autofocus: true %>
+
+    <%= f.submit(@collection.new_record? ? "Dodaj post" : "Edytuj post") %>
+  </div>
+<% end %>
