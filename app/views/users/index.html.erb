@@ -1,10 +1,16 @@
-
-<% if current_user.admin === true %>
-  <h1>Admin Panel</h1>
-    <%= link_to "Dodane Medytacje", meditations_path %>
-    <%= link_to "Dodaj Medytacje", new_meditation_path %>
-  <% else %>
-  <h1>Nie Admin</h1>
+<% if current_user%>
+  <% if current_user.admin === true %>
+    <h1>Admin Panel</h1>
+      <%= link_to "Dodane Medytacje", meditations_path %>
+      <%= link_to "Dodaj Medytacje", new_meditation_path %>
+    <% else %>
+    <h1>Nie Admin</h1>
+  <% end %>
+<% else %>
+  <h2>właśnie się wylogowałeś</h2>
+  <p>możesz zalogować się ponownie <br> <%= link_to "zaloguj", new_user_session_path %> </p>
+  
 <% end %>
+  
 
 
