@@ -1,9 +1,11 @@
 <%= form_for @meditation do |f| %>
   <div class="form-group">
-    <%= select_tag(:collection_id, options_for_select(@collections), prompt: "Wybierz kolekję ") %>
-    <%= f.text_field :name, placeholder: "Wprowadź nazwę medytacjii..", autofocus: true %>
+    <%= link_to "Dodaj nową kolekcje", new_collection_path %><br>
+    <%= select_tag(:collection_id, options_for_select(@collections), prompt: "Dodaj do istniejącej kolekcjii") %><br>
+    <%= f.text_field :name, placeholder: "Wprowadź nazwę medytacjii..", autofocus: true %><br>
     <%= f.label "Plik audio" %>
-    <%= f.file_field :meditationFile %>
-    <%= f.submit(@meditation.new_record? ? "Dodaj post" : "Edytuj post") %>
+    <%= f.file_field :meditationFile %><br>
+    <%= f.submit(@meditation.new_record? ? "Dodaj medytacje" : "Edytuj post") %>
   </div>
+  <%= link_to "Wróć", meditations_path %>
 <% end %>

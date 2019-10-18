@@ -1,3 +1,10 @@
-<div class="main-page">
 
-</div>
+<% if current_user.admin === true %>
+  <h1>Admin Panel</h1>
+    <%= link_to "Dodane Medytacje", meditations_path %>
+    <%= link_to "Dodaj Medytacje", new_meditation_path %>
+  <% else %>
+  <h1>Nie Admin</h1>
+<% end %>
+
+
