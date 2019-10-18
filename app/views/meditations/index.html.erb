@@ -1,8 +1,8 @@
   <% @meditations.each do |meditation| %>
-    <%= link_to "Dodaj nową medytację", new_meditation_path %>
+    <%= link_to "Dodaj nową medytację", new_meditation_path, class: 'link' %>
     <br>
     <br>
     <h3>Lista dodanych medytacji</h3>
     <h4><%= meditation.name %> </h4>
-    <%= link_to "Osłuchaj medytacji", meditation_path(meditation) %>
+    <%= link_to "Osłuchaj medytacji", meditation_path(meditation), class: 'link' %>
   <% end %>
