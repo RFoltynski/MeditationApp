@@ -1,5 +1,6 @@
 class MeditationsController < ApplicationController
-  before_action :find_meditation, only: %i[show destroy]
+  before_action :find_meditation, only: %i[show destroy edit]
+  before_action :meditation_params, only: %i[create update]
   def index
     @meditations = Meditation.all
   end
@@ -11,10 +12,12 @@ class MeditationsController < ApplicationController
 
   def create
     @meditation = Meditation.new(meditation_params)
-
     @meditation.collection_id = params[:collection_id]
-    return render('new') unless @meditation.save
-    redirect_to meditations_path
+    if @meditation.save
+      redirect_to meditations_path
+    else
+      render 'new'
+    end
   end
 
   def show; end
