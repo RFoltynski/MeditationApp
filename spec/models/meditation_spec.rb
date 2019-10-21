@@ -6,4 +6,8 @@ RSpec.describe Meditation, type: :model do
     it { is_expected.to validate_uniqueness_of(:name) }
   end
 
+  describe "relations" do
+    it { is_expected.to belong_to(:collection) } 
+  end
+
 end
