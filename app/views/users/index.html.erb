@@ -1,3 +1,22 @@
-<div class="main-page">
+<% if current_user%>
+  <% if current_user.admin === true %>
+    <h1>Admin Panel</h1>
+      <%= link_to "Dodaj Medytacje", new_meditation_path, class: 'link'%>
+      <%= link_to "Dodaj Kolekcję", new_collection_path, class: 'link'%>
+      
+      <% @collections.each do |collection| %>
+        <h2><%= collection.name %></h2>
+        <%= collection.description %>
+        <%= link_to "Zobacz kolekcje", collection_path(collection), class: "link" %>
+        <%= link_to "Usuń", collection_path(collection), method: :delete, data: {confirm: 'Czy jesteś pewien?'}, class: "link" %> 
+      <% end %>
+      
+    <% else %>
+    <h1>Nie Admin</h1>
+  <% end %>
+<% else %>
+  <p>Możesz zalogować się ponownie <br> <%= link_to "zaloguj", new_user_session_path %> </p>
+<% end %>
+  
 
-</div>
+

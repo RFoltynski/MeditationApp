@@ -1,1 +1,11 @@
-<%= @collection.name %>
+<%= @collection.name %> <br>
+<%= @collection.description %>
+
+
+<% @meditations.each do |meditation| %>
+  <h2><%= meditation.name %></h2>
+   <%= link_to "Usuń", meditation_path(meditation), method: :delete, data: {confirm: 'Czy jesteś pewien?'}, class: "link" %> 
+    <%= link_to "Edytuj", edit_meditation_path(meditation), class: 'link' %>
+    <%= link_to "Osłuchaj", meditation_path(meditation), class: 'link' %>
+  
+<% end %>

@@ -1,10 +1,11 @@
 class CollectionsController < ApplicationController
+  before_action :find_collection, only: %i[show destroy]
   def new 
     @collection = Collection.new
   end
 
-  def show
-    @collection = Collection.find(params[:id])
+  def show 
+    @meditations = @collection.meditations
   end
 
   def create
@@ -13,10 +14,19 @@ class CollectionsController < ApplicationController
     redirect_to @collection
   end
 
+  def destroy
+    @collection.destroy
+    redirect_to users_path
+  end
+
   private
 
   def collection_params 
-  params.require(:collection).permit(:name)
+  params.require(:collection).permit(:name, :description)
+  end
+
+  def find_collection
+    @collection = Collection.find(params[:id])
   end
 
 end
