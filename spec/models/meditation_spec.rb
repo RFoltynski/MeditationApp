@@ -1,5 +1,9 @@
-# require 'rails_helper'
+require 'rails_helper'
 
-# RSpec.describe Meditation, type: :model do
-#   pending "add some examples to (or delete) #{__FILE__}"
-# end
+RSpec.describe Meditation, type: :model do
+  describe 'validation' do
+    it { is_expected.to validate_presence_of(:name) }
+    it { is_expected.to validate_uniqueness_of(:name) }
+  end
+
+end
