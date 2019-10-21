@@ -2,7 +2,7 @@
   <div class="form-group">
    
     <%= f.text_field :name, placeholder: "Wprowadź nazwę kolekcji..", autofocus: true %>
-
+    <%= f.text_area :description, placeholder: "Dodaj opis tej kolekcjii", autofocus: true %>
     <%= f.submit(@collection.new_record? ? "Dodaj post" : "Edytuj post") %>
   </div>
 <% end %>
