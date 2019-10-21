@@ -1,8 +1,8 @@
 <% if current_user%>
   <% if current_user.admin === true %>
     <h1>Admin Panel</h1>
-      <%= link_to "Dodane Medytacje", meditations_path, class:'link'%>
       <%= link_to "Dodaj Medytacje", new_meditation_path, class: 'link'%>
+      <%= link_to "Dodaj Kolekcję", new_collection_path, class: 'link'%>
       
       <% @collections.each do |collection| %>
         <h2><%= collection.name %></h2>
