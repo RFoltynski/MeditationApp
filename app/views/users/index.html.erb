@@ -7,7 +7,8 @@
       <% @collections.each do |collection| %>
         <h2><%= collection.name %></h2>
         <%= collection.description %>
-        <%= link_to "Zobacz kolekcje", collection_path(collection) %>
+        <%= link_to "Zobacz kolekcje", collection_path(collection), class: "link" %>
+        <%= link_to "Usuń", collection_path(collection), method: :delete, data: {confirm: 'Czy jesteś pewien?'}, class: "link" %> 
       <% end %>
       
     <% else %>

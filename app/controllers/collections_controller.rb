@@ -13,6 +13,12 @@ class CollectionsController < ApplicationController
     redirect_to @collection
   end
 
+  def destroy
+    @collection = Collection.find(params[:id])
+    @collection.destroy
+    redirect_to users_path
+  end
+
   private
 
   def collection_params 
