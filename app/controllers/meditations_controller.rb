@@ -1,4 +1,5 @@
 class MeditationsController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_meditation, only: %i[show destroy edit]
   before_action :meditation_params, only: %i[create update]
   def index

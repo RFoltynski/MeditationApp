@@ -20,7 +20,7 @@
         1,
         null,
         1,
-        17,
+        19,
         null,
         2,
         null,
@@ -42,7 +42,8 @@
         1,
         1,
         1,
-        0,
+        1,
+        2,
         null,
         null,
         1,
@@ -143,7 +144,6 @@
         1,
         null,
         null,
-        null,
         null
       ],
       "/home/rafal/Pulpit/MeditationApp/app/controllers/collections_controller.rb": [
@@ -208,6 +208,6 @@
         0
       ]
     },
-    "timestamp": 1571646943
+    "timestamp": 1571721797
   }
 }
