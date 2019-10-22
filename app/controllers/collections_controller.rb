@@ -11,9 +11,11 @@ class CollectionsController < ApplicationController
 
   def create
     @collection = Collection.new(collection_params)
-    return render('new') unless @collection.save
-
-    redirect_to @collection
+    if @collection.save 
+      redirect_to users_path
+    else
+      render 'new'
+    end
   end
 
   def destroy

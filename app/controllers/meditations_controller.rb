@@ -8,7 +8,7 @@ class MeditationsController < ApplicationController
 
   def new
     @meditation = Meditation.new
-    @collections = Collection.all.map{|c| [c.name, c.id]}
+    @collections = Collection.all.map{ |c| [c.name, c.id] }
   end
 
   def create
