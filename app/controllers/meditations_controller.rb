@@ -14,11 +14,8 @@ class MeditationsController < ApplicationController
   def create
     @meditation = Meditation.new(meditation_params)
     @meditation.collection_id = params[:collection_id]
-    if @meditation.save
-      redirect_to meditations_path
-    else
-      render 'new'
-    end
+    return render('new') unless @meditation.save
+    redirect_to meditations_path
   end
 
   def show; end

@@ -1,6 +1,9 @@
 FactoryBot.define do
-  factory :collection do
-    name { Faker::Lorem.characters(number: 8) }
-    description { Faker::Lorem.characters(number: 25) }
+  factory :collection do |f|
+    f.name { Faker::Name.first_name }
+    f.description { Faker::Lorem.characters(number: 25)}
+  end
+  factory :invalid_collection, parent: :collection do |f|
+    f.name { ' ' }
   end
 end

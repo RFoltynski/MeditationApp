@@ -1,7 +1,7 @@
 <%= form_for @meditation do |f| %>
   <div class="form-group">
     <%= link_to "Dodaj nową kolekcje", new_collection_path, class: 'link' %><br>
-    <%= select_tag(:collection_id, options_for_select(@collections), prompt: "Dodaj do istniejącej kolekcjii") %><br>
+    <%= select_tag(:collection_id, options_for_select(@collections)) %><br>
     <%= f.text_field :name, placeholder: "Wprowadź nazwę medytacjii..", autofocus: true %><br>
     <%= f.label "Plik audio" %>
     <%= f.file_field :meditationFile %><br>

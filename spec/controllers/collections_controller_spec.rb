@@ -30,20 +30,22 @@ RSpec.describe CollectionsController, type: :controller do
   end
 
   describe 'POST #create' do
-    let(:valid_attributes) { { collection: { name: 'test', description: 'testtest' } } }
-    let(:invalid_attributes) { { collection: { name: ' ', description: '' } } }
+    let(:valid_collection) { { collection: { name: 'testsdfasdf', description: 'testtest' } } }
+    let(:invalid_collection) { { collection: { name: ' ', description: '' } } }
 
     context 'valid attributes' do
-      subject { post :create, params: valid_attributes }
+      subject { post :create, params: valid_collection }
 
       it { expect(subject).to redirect_to(users_path) }
       it { expect { subject }.to change(Collection, :count).by(1) }
     end
+    
     context 'invalid attributes' do
-      subject { post :create, params: invalid_attributes }
+      subject { post :create, params: invalid_collection }
 
       it { expect(subject).to render_template('new') }
       it { expect { subject }.to change(Collection, :count).by(0) }
     end
+
   end
 end
