@@ -1,4 +1,5 @@
 class MeditationsController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_meditation, only: %i[show destroy edit]
   before_action :meditation_params, only: %i[create update]
   def index
@@ -7,17 +8,14 @@ class MeditationsController < ApplicationController
 
   def new
     @meditation = Meditation.new
-    @collections = Collection.all.map{|c| [c.name, c.id]}
+    @collections = Collection.all.map{ |c| [c.name, c.id] }
   end
 
   def create
     @meditation = Meditation.new(meditation_params)
     @meditation.collection_id = params[:collection_id]
-    if @meditation.save
-      redirect_to meditations_path
-    else
-      render 'new'
-    end
+    return render('new') unless @meditation.save
+    redirect_to meditations_path
   end
 
   def show; end
