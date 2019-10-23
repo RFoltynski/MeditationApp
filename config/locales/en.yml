@@ -30,4 +30,12 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    errors:
+      messages:
+        {
+          required: "Wybierz lub stwórz nową kategorię..", 
+          blank: "Żadne pole nie może być puste..",
+          taken: "To nazwa jest już zajęcta.."
+        }
+

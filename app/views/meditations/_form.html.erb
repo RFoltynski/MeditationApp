@@ -1,8 +1,17 @@
+
 <%= form_for @meditation do |f| %>
+<% if @meditation.errors.any? %>
+<ul>
+  <% @meditation.errors.each do |attr,msg| %>
+    <li><%= msg %></li>
+  <% end %>
+</ul>
+<% end %>
   <div class="form-group">
     <%= link_to "Dodaj nową kolekcje", new_collection_path, class: 'link' %><br>
-    <%= select_tag(:collection_id, options_for_select(@collections)) %><br>
+
     <%= f.text_field :name, placeholder: "Wprowadź nazwę medytacjii..", autofocus: true %><br>
+        <%= select_tag(:collection_id, options_for_select(@collections), {:prompt => "--select county--"}) %><br>
     <%= f.label "Plik audio" %>
     <%= f.file_field :meditationFile %><br>
     <%= f.submit(@meditation.new_record? ? "Dodaj medytacje" : "Edytuj post") %>

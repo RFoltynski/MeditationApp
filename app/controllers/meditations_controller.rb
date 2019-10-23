@@ -7,15 +7,21 @@ class MeditationsController < ApplicationController
   end
 
   def new
-    @meditation = Meditation.new
     @collections = Collection.all.map{ |c| [c.name, c.id] }
+    @meditation = Meditation.new
+    
   end
 
   def create
     @meditation = Meditation.new(meditation_params)
     @meditation.collection_id = params[:collection_id]
-    return render('new') unless @meditation.save
-    redirect_to meditations_path
+    @collections = Collection.all.map{|c| [ c.name, c.id ] }
+    if @meditation.save 
+      flash[:notice] = "Medytacja została dodana."
+      redirect_to meditations_path
+    else 
+      render 'new'
+    end
   end
 
   def show; end
