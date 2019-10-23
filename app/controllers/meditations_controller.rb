@@ -14,8 +14,8 @@ class MeditationsController < ApplicationController
   def create
     @meditation = Meditation.new(meditation_params)
     @meditation.collection_id = params[:collection_id]
-    if @meditation.save 
-      flash[:notice] = "Medytacja została dodana."
+    if @meditation.save
+      flash[:notice] = 'Medytacja została dodana.'
       redirect_to meditations_path
     else 
       render 'new'
@@ -29,7 +29,7 @@ class MeditationsController < ApplicationController
   def update
     @meditation.collection_id = params[:collection_id]
     if @meditation.update(meditation_params)
-      flash[:notice] = "Medytacja została edytowana."
+      flash[:notice] = 'Medytacja została edytowana.'
       redirect_to meditations_path
     else
       render 'edit'
