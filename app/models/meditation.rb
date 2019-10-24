@@ -5,4 +5,8 @@ class Meditation < ApplicationRecord
   validates :name,
             presence: true,
             uniqueness: true
+  validates :collection_id, presence: true
+  validates :meditationFile, presence: {
+    message: "Dodaj plik z medytacją.."
+  }
 end

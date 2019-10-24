@@ -1,4 +1,11 @@
 <%= form_for @meditation, html: {multiple: true} do |f| %>
+<% if @meditation.errors.any? %>
+<ul>
+  <% @meditation.errors.each do |attr,msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+<% end %>
   <div class="form-group">
     <%= link_to "Dodaj nową kolekcje", new_collection_path, class: 'link' %><br>
     <%= f.select :collection_id, @collections %>

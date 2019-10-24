@@ -1,6 +1,6 @@
 class CollectionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_collection, only: %i[show destroy]
+  before_action :find_collection, only: %i[show destroy edit update]
   def new 
     @collection = Collection.new
   end
@@ -15,6 +15,16 @@ class CollectionsController < ApplicationController
       redirect_to users_path
     else
       render 'new'
+    end
+  end
+
+  def edit; end
+
+  def update 
+    if @collection.update(collection_params) 
+      redirect_to users_path
+    else
+      render 'edit'
     end
   end
 
