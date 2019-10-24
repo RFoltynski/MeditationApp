@@ -36,6 +36,7 @@ en:
         {
           required: "Wybierz lub stwórz nową kategorię..", 
           blank: "Żadne pole nie może być puste..",
-          taken: "To nazwa jest już zajęcta.."
+          taken: "To nazwa jest już zajęcta..",
+          too_short: "Opis musi mieć od 1 do 255 znaków."
         }
 

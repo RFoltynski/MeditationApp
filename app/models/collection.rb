@@ -3,3 +3,4 @@ class Collection < ActiveRecord::Base
   validates :description, presence: true, length: { minimum: 1, maximum: 255 }
   has_many :meditations
 end
+ 
