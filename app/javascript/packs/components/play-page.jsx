@@ -5,7 +5,8 @@ import ReactAudioPlayer from "react-audio-player";
 
 class MeditationPlay extends Component {
   state = {
-    isLoading: false
+    isLoading: false,
+    meditation: {}
   };
 
   componentWillMount() {
@@ -20,21 +21,19 @@ class MeditationPlay extends Component {
       )
       .then(res => {
         this.setState({
-          intentions: res.data.data,
+          meditation: res.data.data,
           isLoading: true
         });
       });
   }
 
   render() {
-    let audio = this.state.isLoading
-      ? this.state.intentions.meditationFile
-      : "";
+    const { meditation, isLoading } = this.state;
+
     return (
       <div>
-        <div>
-          <ReactAudioPlayer src={audio} controls />
-        </div>
+        <h1>{isLoading ? meditation.name : ""}</h1>
+        <ReactAudioPlayer src={meditation.meditationFile} controls />
       </div>
     );
   }
