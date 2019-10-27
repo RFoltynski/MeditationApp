@@ -12,13 +12,15 @@
 }
 .collection-box {
   width: 80%;
+  height: 100%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   margin: 0 auto;
 }
 .collection-box-content {
   background-color: whitesmoke;
-  width: 33%;
+  min-width: 30%;
   min-height: 120px;
   margin: 15px;
   display: flex;
