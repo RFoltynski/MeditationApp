@@ -29,11 +29,14 @@ class MeditationPlay extends Component {
 
   render() {
     const { meditation, isLoading } = this.state;
-
     return (
       <div>
         <h1>{isLoading ? meditation.name : ""}</h1>
-        <ReactAudioPlayer src={meditation.meditationFile} controls />
+        <ReactAudioPlayer
+          src={meditation.meditationFile}
+          controls
+          className="medi-player"
+        />
       </div>
     );
   }
