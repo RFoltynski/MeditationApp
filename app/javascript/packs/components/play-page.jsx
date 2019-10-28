@@ -1,12 +1,23 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
-import ReactAudioPlayer from "react-audio-player";
 
 class MeditationPlay extends Component {
   state = {
     isLoading: false,
-    meditation: {}
+    meditation: {},
+    play: false
+  };
+  audio = document.querySelector("audio");
+
+  togglePlay = () => {
+    this.setState({ play: !this.state.play }, () => {
+      this.state.play ? audio.play() : audio.pause();
+    });
+  };
+
+  replayMeditation = () => {
+    audio.currentTime = 0;
   };
 
   componentWillMount() {
@@ -32,11 +43,12 @@ class MeditationPlay extends Component {
     return (
       <div>
         <h1>{isLoading ? meditation.name : ""}</h1>
-        <ReactAudioPlayer
-          src={meditation.meditationFile}
-          controls
-          className="medi-player"
-        />
+
+        <audio id="audio" src={meditation.meditationFile} />
+        <button onClick={this.togglePlay}>
+          {this.state.play ? "pause" : "play"}
+        </button>
+        <button onClick={this.replayMeditation}>Replay</button>
       </div>
     );
   }
