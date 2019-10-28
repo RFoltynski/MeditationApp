@@ -1,12 +1,21 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
+function getTime(time) {
+  if (!isNaN(time)) {
+    return (
+      Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2)
+    );
+  }
+}
 
 class MeditationPlay extends Component {
   state = {
     isLoading: false,
     meditation: {},
-    play: false
+    play: false,
+    currentTime: 0.0,
+    duration: 0.0
   };
   audio = document.querySelector("audio");
 
@@ -18,6 +27,19 @@ class MeditationPlay extends Component {
 
   replayMeditation = () => {
     audio.currentTime = 0;
+  };
+
+  componentDidMount = () => {
+    audio.addEventListener("timeupdate", e => {
+      this.setState({
+        currentTime: e.target.currentTime,
+        duration: e.target.duration
+      });
+    });
+  };
+
+  componentWillUnmount = () => {
+    this.audio.removeEventListener("timeupdate", () => {});
   };
 
   componentWillMount() {
@@ -39,11 +61,13 @@ class MeditationPlay extends Component {
   }
 
   render() {
+    const currentTime = getTime(this.state.currentTime);
+    const duration = getTime(this.state.duration);
     const { meditation, isLoading } = this.state;
     return (
       <div>
         <h1>{isLoading ? meditation.name : ""}</h1>
-
+        <p>{currentTime + "/" + duration}</p>
         <audio id="audio" src={meditation.meditationFile} />
         <button onClick={this.togglePlay}>
           {this.state.play ? "pause" : "play"}
