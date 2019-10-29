@@ -24,9 +24,15 @@ class MeditationPlay extends Component {
   audio = document.querySelector("audio");
   progress = 0;
   togglePlay = () => {
-    this.setState({ play: !this.state.play }, () => {
-      this.state.play ? audio.play() : audio.pause();
-    });
+    if (this.state.progress < 100) {
+      this.setState({ play: !this.state.play }, () => {
+        this.state.play ? audio.play() : audio.pause();
+      });
+    } else {
+      audio.currentTime = 0;
+      audio.play();
+      this.setState({ play: true });
+    }
   };
 
   replayMeditation = () => {
@@ -42,6 +48,7 @@ class MeditationPlay extends Component {
   };
 
   mute = () => {
+    this.setState({ mute: !this.state.mute });
     audio.muted = !audio.muted;
   };
 
@@ -68,7 +75,7 @@ class MeditationPlay extends Component {
   componentWillMount() {
     const currentHref = window.location.href.split("/");
     const id = currentHref[currentHref.length - 1];
-
+    this.setState({ id: id });
     axios
       .get(
         `http://localhost:3000/api/v1/meditations/${id}`,
@@ -87,6 +94,7 @@ class MeditationPlay extends Component {
     const currentTime = getTime(this.state.currentTime);
     const duration = getTime(this.state.duration);
     const { meditation, isLoading } = this.state;
+
     return (
       <div>
         <h1>{isLoading ? meditation.name : ""}</h1>
@@ -99,7 +107,7 @@ class MeditationPlay extends Component {
         </div>
         <audio id="audio" src={meditation.meditationFile} />
         <button onClick={this.togglePlay}>
-          {this.state.play ? "pause" : "play"}
+          {this.state.play && this.state.progress < 100 ? "pause" : "play"}
         </button>
         <button onClick={this.moveForword}>15+</button>
         <button onClick={this.moveBackword}>15-</button>
@@ -115,7 +123,9 @@ class MeditationPlay extends Component {
           onChange={this.changeVolume}
           onClick={this.changeVolume}
         />
-        <button onClick={this.mute}>mute</button>
+        <button onClick={this.mute}>
+          {this.state.mute ? "unmut" : "mute"}
+        </button>
       </div>
     );
   }
