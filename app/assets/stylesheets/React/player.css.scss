@@ -19,3 +19,11 @@
   z-index: 1;
   transition: width 0.1s linear;
 }
+
+.slider-wrapper input {
+  width: 150px;
+  height: 20px;
+  margin: 0;
+  transform-origin: 75px 75px;
+  transform: rotate(-90deg);
+}

@@ -17,7 +17,9 @@ class MeditationPlay extends Component {
     play: false,
     currentTime: 0.0,
     duration: 0.0,
-    progress: 0
+    progress: 0,
+    volume: 1,
+    mute: false
   };
   audio = document.querySelector("audio");
   progress = 0;
@@ -38,6 +40,17 @@ class MeditationPlay extends Component {
   moveBackword = () => {
     audio.currentTime = audio.currentTime - 15;
   };
+
+  mute = () => {
+    audio.muted = !audio.muted;
+  };
+
+  changeVolume = e => {
+    this.setState({ volume: event.target.value });
+    audio.volume = this.state.volume / 10;
+    console.log(this.state.volume);
+  };
+
   componentDidMount = () => {
     audio.addEventListener("timeupdate", e => {
       this.setState({
@@ -90,7 +103,19 @@ class MeditationPlay extends Component {
         </button>
         <button onClick={this.moveForword}>15+</button>
         <button onClick={this.moveBackword}>15-</button>
-        <button onClick={this.replayMeditation}>Replay</button>
+        <button onClick={this.replayMeditation}>replay</button>
+        <input
+          className={"slider-wrapper"}
+          id="typeinp"
+          type="range"
+          min="0"
+          max="10"
+          step="1"
+          value={this.state.volume}
+          onChange={this.changeVolume}
+          onClick={this.changeVolume}
+        />
+        <button onClick={this.mute}>mute</button>
       </div>
     );
   }
