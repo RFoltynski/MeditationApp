@@ -15,6 +15,9 @@
     "react-dom": "^16.9.0",
     "react-hot-loader": "^4.12.15"
   },
+  "scripts": {
+    "start:dev": "bin/webpack-dev-server --watch"
+  },
   "version": "0.1.0",
   "devDependencies": {
     "webpack-dev-server": "^3.8.0"

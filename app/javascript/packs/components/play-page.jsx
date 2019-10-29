@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
+
 function getTime(time) {
   if (!isNaN(time)) {
     return (
@@ -15,10 +16,11 @@ class MeditationPlay extends Component {
     meditation: {},
     play: false,
     currentTime: 0.0,
-    duration: 0.0
+    duration: 0.0,
+    progress: 0
   };
   audio = document.querySelector("audio");
-
+  progress = 0;
   togglePlay = () => {
     this.setState({ play: !this.state.play }, () => {
       this.state.play ? audio.play() : audio.pause();
@@ -29,11 +31,19 @@ class MeditationPlay extends Component {
     audio.currentTime = 0;
   };
 
+  moveForword = () => {
+    audio.currentTime = audio.currentTime + 15;
+  };
+
+  moveBackword = () => {
+    audio.currentTime = audio.currentTime - 15;
+  };
   componentDidMount = () => {
     audio.addEventListener("timeupdate", e => {
       this.setState({
         currentTime: e.target.currentTime,
-        duration: e.target.duration
+        duration: e.target.duration,
+        progress: ((e.target.currentTime * 10) / e.target.duration) * 10
       });
     });
   };
@@ -68,10 +78,18 @@ class MeditationPlay extends Component {
       <div>
         <h1>{isLoading ? meditation.name : ""}</h1>
         <p>{currentTime + "/" + duration}</p>
+        <div className="progresBar">
+          <div
+            className="progresBar-currentTime"
+            style={{ width: `${this.state.progress}%` }}
+          ></div>
+        </div>
         <audio id="audio" src={meditation.meditationFile} />
         <button onClick={this.togglePlay}>
           {this.state.play ? "pause" : "play"}
         </button>
+        <button onClick={this.moveForword}>15+</button>
+        <button onClick={this.moveBackword}>15-</button>
         <button onClick={this.replayMeditation}>Replay</button>
       </div>
     );
