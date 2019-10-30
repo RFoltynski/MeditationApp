@@ -1,0 +1,23 @@
+$black: #080707;
+$gray: #225560;
+$yellow: #fcc319;
+$yellow-light: #f0cf75;
+$orange: #f15946;
+$white: #ffffff;
+
+.meditation-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 60%;
+  height: 60vh;
+  background-color: $orange;
+  justify-content: space-around;
+}
+
+.form-new {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
