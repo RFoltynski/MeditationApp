@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  get 'comments/index'
   devise_for :users
   resources :users, only: %i[index show]
-  resources :meditations
+  resources :meditations do 
+    resources :comments
+  end
   resources :collections
 
   resources :users do
