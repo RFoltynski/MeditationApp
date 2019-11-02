@@ -1,4 +1,10 @@
 <div>
   <p><%= comment.content %></p>
   <p>By: <%= comment.user.nick %></p>
+  <div class="links">
+    <% if comment.user_id == current_user.id %>
+    <%= link_to "Edytuj", edit_meditation_comment_path(comment.meditation, comment) %>
+    <%= link_to "Delete", meditation_comment_path(comment.meditation, comment), method: :delete, data: {confirm: "Czy jesteś pewien?"} %>
+    <% end %>
+  </div>
 </div>
