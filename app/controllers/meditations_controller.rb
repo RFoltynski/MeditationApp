@@ -51,7 +51,7 @@ class MeditationsController < ApplicationController
     @meditation = Meditation.find(params[:id])
   end
 
-  def set_collections 
-    @collections = Collection.all.map{ |c| [c.name, c.id] }
+  def set_collections
+    @collections = Collection.all.map { |c| [c.name, c.id] }
   end
 end

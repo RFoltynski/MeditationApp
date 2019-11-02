@@ -1,13 +1,14 @@
 class CommentsController < ApplicationController
-  before_action :find_meditation, only: [:create, :edit, :update, :destroy]
-  before_action :find_comment, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :find_meditation, only: %i[create edit update destroy]
+  before_action :find_comment, only: %i[edit update destroy]
   def create
     @comment = @meditation.comments.create(comment_params)
     @comment.user_id = current_user.id
 
-    if @comment.save 
+    if @comment.save
       redirect_to meditation_path(@meditation)
-    else 
+    else
       render 'new'
     end
   end
@@ -26,6 +27,7 @@ class CommentsController < ApplicationController
   end
 
   private
+
   def comment_params
     params.require(:comment).permit(:content)
   end
