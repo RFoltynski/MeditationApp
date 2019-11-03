@@ -7,7 +7,7 @@ RSpec.describe Meditation, type: :model do
   end
 
   describe "relations" do
-    it { is_expected.to belong_to(:collection) } 
+    it { is_expected.to belong_to(:collection) }
+    it { is_expected.to have_many(:comments) }
   end
-
 end

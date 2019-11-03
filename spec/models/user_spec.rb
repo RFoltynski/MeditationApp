@@ -1,12 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-
   describe 'validation' do
     it { is_expected.to validate_presence_of(:nick) }
     it { is_expected.to validate_uniqueness_of(:nick) }
     it { is_expected.to validate_presence_of(:email) }
     it { is_expected.to validate_presence_of(:password) }
+  end
+
+  describe "relations" do
+    it { is_expected.to have_many(:comments) }
   end
 
   describe 'presence of valuses' do
