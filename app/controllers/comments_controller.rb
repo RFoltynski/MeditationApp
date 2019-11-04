@@ -8,8 +8,10 @@ class CommentsController < ApplicationController
 
     if @comment.save
       redirect_to meditation_path(@meditation)
+      flash[:notice] = 'Komentarz dodany..'
     else
-      render 'new'
+      redirect_to meditation_path(@meditation)
+      flash[:notice] = 'Komentarz nie został dodany..'
     end
   end
 
