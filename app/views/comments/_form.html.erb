@@ -1,0 +1,4 @@
+<%= form_for [@meditation, @meditation.comments.build] do |f| %>
+  <%= f.text_area :content %>
+  <%= f.button :submit %>
+<% end %>

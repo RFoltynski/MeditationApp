@@ -6,5 +6,6 @@ FactoryBot.define do
         meditation.meditationFile.attach(io: File.open('spec/files/sounds/test.mp3'), filename: 'test.mp3')
       end
     end
+    collection_id {32}
   end
 end

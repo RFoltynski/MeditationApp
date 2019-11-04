@@ -1,2 +1,8 @@
 <div id="play-page"></div>
-<%= javascript_pack_tag 'components/play-page' %>
+  <%= javascript_pack_tag 'components/play-page' %>
+<h3>comments</h3>
+  <p>
+    <%= render @meditation.comments %>
+  </p>
+<h3>Dodaj komentarz</h3>
+<%= render 'comments/form' %>

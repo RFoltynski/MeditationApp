@@ -3,6 +3,7 @@ class MeditationsController < ApplicationController
   before_action :find_meditation, only: %i[show destroy edit update]
   before_action :meditation_params, only: %i[create update]
   before_action :set_collections, only: %i[new create edit update]
+
   def index
     @meditations = Meditation.all
   end
@@ -51,7 +52,7 @@ class MeditationsController < ApplicationController
     @meditation = Meditation.find(params[:id])
   end
 
-  def set_collections 
-    @collections = Collection.all.map{ |c| [c.name, c.id] }
+  def set_collections
+    @collections = Collection.all.map { |c| [c.name, c.id] }
   end
 end
