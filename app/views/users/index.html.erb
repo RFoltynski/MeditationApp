@@ -1,10 +1,11 @@
 <% if current_user%>
+<% @collections.each do |collection| %>
   <% if current_user.admin === true %>
     <h1>Admin Panel</h1>
       <button><%= link_to "Dodaj Medytacje", new_meditation_path, class: 'link'%></button>
       <button><%= link_to "Dodaj Kolekcję", new_collection_path, class: 'link'%></button>
       <div class="collection-box">
-      <% @collections.each do |collection| %>
+      
       <div class="collection-box-content">
         <h3><%= collection.name %></h3>
         <p><%= collection.description %></p>
@@ -14,10 +15,21 @@
         <%= link_to "Usuń", collection_path(collection), method: :delete, data: {confirm: 'Czy jesteś pewien?'}, class: "link" %> 
         </div>
       </div>
-      <% end %>
+      
       </div>
     <% else %>
-    <h1>Nie Admin</h1>
+        <div class="collection-box">
+      
+      <div class="collection-box-content">
+        <h3><%= collection.name %></h3>
+        <p><%= collection.description %></p>
+        <div class="collection-box-content-links">
+        <%= link_to "Zobacz kolekcje", collection_path(collection), class: "link" %>
+        </div>
+      </div>
+      
+      </div>
+  <% end %>
   <% end %>
 <% else %>
   <p>Możesz zalogować się ponownie <br> <%= link_to "zaloguj", new_user_session_path %> </p>
