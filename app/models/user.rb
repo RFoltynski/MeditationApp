@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_one_attached :avatar
   has_many :comments
-  has_many :subsciptions
-  has_many :collections, through: :subsciptions
+  has_many :subscriptions
+  has_many :collections, through: :subscriptions
   validates :nick,
             presence: true,
             uniqueness: true

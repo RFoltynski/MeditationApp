@@ -25,6 +25,7 @@
         <p><%= collection.description %></p>
         <div class="collection-box-content-links">
         <%= link_to "Zobacz kolekcje", collection_path(collection), class: "link" %>
+        <%= link_to "Subskrybuj", subscriptions_path(user_id: current_user.id, collection_id: collection.id), class: "link", method: :post %>
         </div>
       </div>
       
