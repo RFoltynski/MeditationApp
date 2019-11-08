@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :comments
   end
   resources :collections
-  resources :subscriptions, only: [:create]
+  resources :subscriptions, only: [:create, :destroy, :index]
 
   resources :users do
     member do

@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :user_params, only: %i[show delete_image_attachment]
   def index
   @collections = Collection.all
+  @subscription = Subscription.find(current_user.id)
   end
   def show
     @user = User.find(params[:id])
