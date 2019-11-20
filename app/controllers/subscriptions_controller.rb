@@ -1,4 +1,5 @@
 class SubscriptionsController < ApplicationController
+
   def index 
     @subscriptions = Subscription.all
   end
@@ -9,10 +10,15 @@ class SubscriptionsController < ApplicationController
   end
 
   def destroy
-    collection = Collection.find(params[:id])
-    @subscription = Subscription.where(user_id: current_user.id, collection_id: collection.id).first
+    @subscription = Subscription.find(params[:id])
     @subscription.destroy
     flash[:notice] = "Subskrycja anulowana"
     redirect_to users_path
+  end
+
+  private 
+
+  def find_subscription
+    @subscription = Subscription.find(params[:id])
   end
 end
