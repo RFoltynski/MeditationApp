@@ -27,10 +27,10 @@
         <%= link_to "Zobacz kolekcje", collection_path(collection), class: "link" %>
 
 
-        <%if current_user.subscriptions.include?(@subscription)%>
+        <%if @current_user.collections.include?(collection)%>
         <%= link_to "Unsub", subscription_path(@subscription), method: :delete, data: {confirm: "are you sure?"} %>
         <% else %>
-        <%= link_to "Subskrybuj", subscriptions_path(user_id: current_user.id, collection_id: collection.id), class: "link", method: :post %>
+        <%= link_to "Sub", subscriptions_path(user_id: current_user.id, collection_id: collection.id), class: "link", method: :post %>
         <% end %>        
      
           
