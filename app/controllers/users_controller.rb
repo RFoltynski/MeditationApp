@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   def index
   @collections = Collection.all
 
-  @subscription = Subscription.find_by(user_id: current_user.id)
+  @subscription = Subscription.find_by(user_id: current_user)
   end
   def show
     @user = User.find(params[:id])
