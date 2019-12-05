@@ -1,0 +1,9 @@
+<% @userCollections.each do |collection| %>
+
+ <h3><%= collection.name %></h3>
+        <p><%= collection.description %></p>
+        <div class="collection-box-content-links">
+        <%= link_to "Zobacz kolekcje", collection_path(collection), class: "link" %>
+
+
+<% end %>

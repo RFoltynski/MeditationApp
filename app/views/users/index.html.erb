@@ -1,11 +1,15 @@
 <% if current_user%>
+   <%= link_to "Twoje Subskrypcje", subscriptions_path, class: "link" %>
 <% @collections.each do |collection| %>
   <% if current_user.admin === true %>
     <h1>Admin Panel</h1>
+  
       <button><%= link_to "Dodaj Medytacje", new_meditation_path, class: 'link'%></button>
       <button><%= link_to "Dodaj Kolekcję", new_collection_path, class: 'link'%></button>
       <div class="collection-box">
       
+
+
       <div class="collection-box-content">
         <h3><%= collection.name %></h3>
         <p><%= collection.description %></p>
@@ -18,6 +22,7 @@
       
       </div>
     <% else %>
+        
         <div class="collection-box">
       
       <div class="collection-box-content">
