@@ -2,6 +2,8 @@ class SubscriptionsController < ApplicationController
 
   def index 
     @subscriptions = Subscription.all
+    @userCollections = current_user.collections
+   
   end
 
   def create 
