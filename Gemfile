@@ -10,7 +10,7 @@ gem 'devise', '~> 4.7.1'
 gem 'jbuilder', '~> 2.5'
 gem "mini_magick"
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 3.12'
 gem 'rails-controller-testing'
 gem 'rubocop', require: false
 gem 'sass-rails', '~> 5'
